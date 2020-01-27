@@ -38,16 +38,15 @@ import javax.swing.table.TableRowSorter;
 public class PhoneBookGUI extends JFrame {
 	
 	private JPanel container = new JPanel();
-    private JTable tbl; 
-    private DefaultTableModel dm;
+   	private JTable tbl; 
+   	private DefaultTableModel dm;
 	private BookMap phoneBookMap = new BookMap();
 	private TableRowSorter<TableModel> rowSorter;
 	private List<RowSorter.SortKey> sortKeys;
 	private InputDialogFrame db;					// i chose to implement my own  input dialog box rather then use a costume confirm box, hope you would like
-	private JButton cmdSubmitAdd = new JButton("submit");	//for the input box
+	private JButton cmdSubmitAdd = new JButton("submit");		//for the input box
 	
-	
-	//constructor
+	//constructor 
 	public PhoneBookGUI(){ 
 		super("Phone Book");
         this.setSize(350, 380);
@@ -61,7 +60,7 @@ public class PhoneBookGUI extends JFrame {
 	            "Last Name",
 	            "Phone number"};
         
-		//adding menu bar and menu items
+	//adding menu bar and menu items
         JMenuBar mb=new JMenuBar();  
         JMenu menuAction=new JMenu("Action");  
         JMenu menuSource=new JMenu("File");  
@@ -77,7 +76,6 @@ public class PhoneBookGUI extends JFrame {
         mb.add(menuSource);  
         mb.add(menuAction);  
         this.setJMenuBar(mb);        
- 
         
         final JFileChooser fileChooser = new JFileChooser();
         // Open the dialog using null as parent component if you are outside a
@@ -178,9 +176,7 @@ public class PhoneBookGUI extends JFrame {
 					e.printStackTrace();
 				}
 				  }
-	      });
-        
-        //
+	      });//end of export
         
         //terminate program
         menuExit.addActionListener(new ActionListener() {
@@ -190,7 +186,7 @@ public class PhoneBookGUI extends JFrame {
 	      });
         
         //mark and delete contact
-		menuDelete.addActionListener(new ActionListener() {
+	menuDelete.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int selRow =tbl.getSelectedRow();
                 if(selRow != -1) {
@@ -208,10 +204,10 @@ public class PhoneBookGUI extends JFrame {
                 			JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-        });
+        });//end of menuedelete
 		
-		//adding new contact
-		menuAdd.addActionListener(new ActionListener() {
+	//adding new contact
+	menuAdd.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent ev) {
 
 				  ArrayList<String> data = new ArrayList<String>(0);
@@ -220,10 +216,10 @@ public class PhoneBookGUI extends JFrame {
 				  data.add("Phone Number:");
 				  db = new InputDialogFrame(data,cmdSubmitAdd, new JLabel("Please input contact details."));
 				  }
-	      });
+	 });//end of menuadd
 
-		ButtonListenerCMD listener = new ButtonListenerCMD();
-		cmdSubmitAdd.addActionListener(listener);
+	ButtonListenerCMD listener = new ButtonListenerCMD();
+	cmdSubmitAdd.addActionListener(listener);
 
     	// create table and table model
     	tbl = new JTable();
@@ -239,7 +235,6 @@ public class PhoneBookGUI extends JFrame {
         rowSorter.setSortKeys(sortKeys);
         rowSorter.sort();
         
-        
         //adjusting filter panel
         JTextField jtblFilter = new JTextField();
         JPanel filterPanel = new JPanel(new BorderLayout());
@@ -248,7 +243,7 @@ public class PhoneBookGUI extends JFrame {
         
         //implement the filter and overide original methods to adjust jtable
         jtblFilter.getDocument().addDocumentListener(new DocumentListener(){
-
+		
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String text = jtblFilter.getText();
@@ -275,7 +270,6 @@ public class PhoneBookGUI extends JFrame {
             public void changedUpdate(DocumentEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-
         });//end of filter
         
         //add objects to container
@@ -287,18 +281,14 @@ public class PhoneBookGUI extends JFrame {
         this.add(filterPanel,BorderLayout.PAGE_END);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-    
-        
-        
-	       
-	}
+	}//end of constructor
 	
 	//clearing and input the data structure back into the table after every change made
 	private void updateTable() {
 		dm.setRowCount(0);
 		for(Map.Entry<String, Contact> entry : phoneBookMap.getMapByPhone().entrySet())
 			dm.addRow(new Object[] {entry.getValue().getFirstName(),entry.getValue().getLastName(),entry.getValue().getPhoneNumber() });
-	}
+	}//end of method
 	
 	//action listner for the submit button sent to the input dialog box
 	public class ButtonListenerCMD implements ActionListener { 
@@ -315,11 +305,8 @@ public class PhoneBookGUI extends JFrame {
 				  
 				  updateTable();
 				  }
-
 			  repaint();
 			  }
-
-	}
-	
+	}//end of listner
 
 }//end of class
