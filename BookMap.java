@@ -10,7 +10,9 @@ public class BookMap {
 	private static Map<String, Contact> myMapPhone;
 	
 	//constructor			
-	public BookMap() {myMapPhone = new TreeMap<>();}
+	public BookMap() {
+		myMapPhone = new TreeMap<>();
+	}
 	
 	//adding contact to each map
 	public void add(Contact newCon) {
