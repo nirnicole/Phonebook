@@ -2,19 +2,19 @@
  applicative phone book
 
 
-Features:
+#Features:
 
-applicative GUI
+- applicative GUI
 
-add contact
+- add contact
 
-delete contact
+- delete contact
 
-search contact
+- search contact
 
-import contact list
+- import contact list
 
-export contact list
+- export contact list
 
 
 
