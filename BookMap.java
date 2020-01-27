@@ -10,13 +10,10 @@ public class BookMap {
 	private static Map<String, Contact> myMapPhone;
 	
 	//constructor			
-	public BookMap() {
-		myMapPhone = new TreeMap<>();
-	}
+	public BookMap() {myMapPhone = new TreeMap<>();}
 	
 	//adding contact to each map
 	public void add(Contact newCon) {
-
 			if(! myMapPhone.containsKey(newCon.getPhoneNumber()))
 				myMapPhone.put(newCon.getPhoneNumber(), newCon);
 			else JOptionPane.showMessageDialog(null,
@@ -32,18 +29,12 @@ public class BookMap {
 		}catch(NullPointerException err) {
 			removed = null;
 		}
-		
 		return removed;
 	}
 	
 	//getters
 	//
-	public int Size() {
-		return myMapPhone.size();
-	}
-
-	public Map<String, Contact> getMapByPhone() {
-		return myMapPhone;
-	}
+	public int Size() {return myMapPhone.size();}
+	public Map<String, Contact> getMapByPhone() {return myMapPhone;}
 
 }//end of class
