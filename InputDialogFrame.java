@@ -18,7 +18,7 @@ public class InputDialogFrame extends JDialog {
 	//constructor
 	public InputDialogFrame(ArrayList<String> data,JButton cmdSubmit, JLabel messege){
 		  	
-			this.setTitle("Input box");
+		this.setTitle("Input box");
 	        this.setResizable(false);
 	        JPanel p = new JPanel(); 
 	        p.setLayout(new GridBagLayout());		//grid box -> message, input lables and jtexts as rows, and submit button in last row.
@@ -49,9 +49,6 @@ public class InputDialogFrame extends JDialog {
 	        this.pack();
 	        this.setLocationRelativeTo(null);
 	        this.setVisible(true);
-	        	        
-	         
-	        	        
 	}//end of constructor
 	
 	//jtexts to array list of strings
@@ -60,12 +57,7 @@ public class InputDialogFrame extends JDialog {
 			  inputData.add(JTextFields.remove(0).getText());	
 	}
 	
-
 	//getter
-	public ArrayList<String> getInputData(){
-		return inputData;
-	}
-	
-
-	
+	public ArrayList<String> getInputData(){return inputData;}
+		
 }//end of class
